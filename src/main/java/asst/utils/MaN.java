@@ -1,5 +1,6 @@
 package asst.utils;
 
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -15,6 +16,14 @@ public class MaN {
    */
   public static boolean isStringMTP(String str) {
     return ((str == null) || (str.length() <= 0));
+  }
+
+  /** Test a list for content
+   * @param list the list of any type
+   * @return true if the list is empty, either null or zero size
+   */
+  public static boolean isListMTP(List<?> list) {
+    return ((list == null) || (list.size() <= 0));
   }
 
   /** Generate a unique random string for use as a database key.

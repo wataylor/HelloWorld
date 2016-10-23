@@ -49,7 +49,7 @@ CREATE TABLE `businessunits` (
 
 LOCK TABLES `businessunits` WRITE;
 /*!40000 ALTER TABLE `businessunits` DISABLE KEYS */;
-INSERT INTO `businessunits` VALUES ('BU001',NULL,'2016-10-14 01:21:30','USR10',NULL,'USR10',NULL,'title','Description','USR1');
+INSERT INTO `businessunits` VALUES ('BU001',NULL,'2016-10-14 01:21:30','USR10',NULL,'USR10',NULL,'Title','Description','USR01'),('BU002','BU001',NULL,'USR10',NULL,'USR10',NULL,'Sub-Unit Title','Sub-Unit Description','USR01');
 /*!40000 ALTER TABLE `businessunits` ENABLE KEYS */;
 UNLOCK TABLES;
 

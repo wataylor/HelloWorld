@@ -23,8 +23,20 @@ public class BusinessUnitController {
 
   @RequestMapping(value="businessUnits", method=RequestMethod.GET)
   public List<BusinessUnit> list() {
-    // return BusinessUnitStub.list();
-    return businessUnitRepository.findAll();
+    boolean success = true;
+    List<BusinessUnit> bulist = businessUnitRepository.findAll();
+    if (MaN.isListMTP(bulist)) {
+      throw new XceptionNotFound();
+    }
+    for (BusinessUnit bu : bulist) {
+      if (!bu.databaseToForm()) {
+	success = false;
+      }
+    }
+    if (!success) {
+      throw new XceptionServerError();
+    }
+    return bulist;
   }
 
   /* Create a new businessUnit - has to generate the new ID */
