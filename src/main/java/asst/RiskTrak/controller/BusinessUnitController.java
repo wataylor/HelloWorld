@@ -40,14 +40,14 @@ public class BusinessUnitController {
   }
 
   /* Create a new businessUnit - has to generate the new ID */
-  @RequestMapping(value="businessUnits", method=RequestMethod.POST)
+  @RequestMapping(value="businessUnit", method=RequestMethod.POST)
   public BusinessUnit create(@RequestBody BusinessUnit businessUnit) {
     // return BusinessUnitStub.create(businessUnit);
     businessUnit.setuUID(MaN.anyNewDBKey());
     return businessUnitRepository.saveAndFlush(businessUnit);
   }
 
-  @RequestMapping(value="businessUnits/{id}", method=RequestMethod.GET) 
+  @RequestMapping(value="businessUnit/{id}", method=RequestMethod.GET) 
   public BusinessUnit get(@PathVariable String id) {
     // return BusinessUnitStub.get(id);
     BusinessUnit bu = businessUnitRepository.findOne(id);
@@ -61,7 +61,7 @@ public class BusinessUnitController {
   }
 
   /* Update an existing businessUnit */
-  @RequestMapping(value="businessUnits/{id}", method=RequestMethod.PUT) 
+  @RequestMapping(value="businessUnit/{id}", method=RequestMethod.PUT) 
   public BusinessUnit update(@PathVariable String id, @RequestBody BusinessUnit businessUnit) {
     //return BusinessUnitStub.update(id, businessUnit);
     BusinessUnit existingBusinessUnit = businessUnitRepository.findOne(id);
@@ -69,7 +69,7 @@ public class BusinessUnitController {
     return businessUnitRepository.saveAndFlush(existingBusinessUnit);
   }
 
-  @RequestMapping(value="businessUnits/{id}", method=RequestMethod.DELETE) 
+  @RequestMapping(value="businessUnit/{id}", method=RequestMethod.DELETE) 
   public BusinessUnit delete(@PathVariable String id) {
     // return BusinessUnitStub.delete(id);
     BusinessUnit existingBusinessUnit = businessUnitRepository.findOne(id);
