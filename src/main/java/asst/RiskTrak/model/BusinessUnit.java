@@ -41,21 +41,21 @@ public class BusinessUnit implements INode{
   @Column(columnDefinition="CreatedByID", length=32, updatable=false)
   public String createdByID;
 
-  @JsonProperty("businessUnitParentID")
-  @Column(columnDefinition="BusinessUnitParentID", length=32, nullable=true)
-  public String businessUnitParentID;
+  @JsonProperty("parentID")
+  @Column(columnDefinition="ParentID", length=32, nullable=true)
+  public String parentID;
 
-  @JsonProperty("businessUnitTitle")
-  @Column(columnDefinition="BusinessUnitTitle", length=255, nullable=true)
-  public String businessUnitTitle;
+  @JsonProperty("title")
+  @Column(columnDefinition="Title", length=255, nullable=true)
+  public String title;
 
-  @JsonProperty("businessUnitDescription")
-  @Column(columnDefinition="BusinessUnitDescription", nullable=true)
-  public String businessUnitDescription;
+  @JsonProperty("description")
+  @Column(columnDefinition="Description", nullable=true)
+  public String description;
 
-  @JsonProperty("businessUnitContactID")
-  @Column(columnDefinition="BusinessUnitContactID", length=32)
-  public String businessUnitContactID;
+  @JsonProperty("contactID")
+  @Column(columnDefinition="ContactID", length=32)
+  public String contactID;
 
   public String getuUID() {
     return uUID;
@@ -105,36 +105,36 @@ public class BusinessUnit implements INode{
     this.createdByID = createdByID;
   }
 
-  public String getBusinessUnitParentID() {
-    return businessUnitParentID;
+  public String getParentID() {
+    return parentID;
   }
 
-  public void setBusinessUnitParentID(String businessUnitParentID) {
-    this.businessUnitParentID = businessUnitParentID;
+  public void setParentID(String businessUnitParentID) {
+    this.parentID = businessUnitParentID;
   }
 
   public String getBusinessUnitTitle() {
-    return businessUnitTitle;
+    return title;
   }
 
-  public void setBusinessUnitTitle(String businessUnitTitle) {
-    this.businessUnitTitle = businessUnitTitle;
+  public void setTitle(String businessUnitTitle) {
+    this.title = businessUnitTitle;
   }
 
-  public String getBusinessUnitDescription() {
-    return businessUnitDescription;
+  public String getDescription() {
+    return description;
   }
 
-  public void setBusinessUnitDescription(String businessUnitDescription) {
-    this.businessUnitDescription = businessUnitDescription;
+  public void setDescription(String businessUnitDescription) {
+    this.description = businessUnitDescription;
   }
 
-  public String getBusinessUnitContactID() {
-    return businessUnitContactID;
+  public String getContactID() {
+    return contactID;
   }
 
-  public void setBusinessUnitContactID(String businessUnitContactID) {
-    this.businessUnitContactID = businessUnitContactID;
+  public void setContactID(String businessUnitContactID) {
+    this.contactID = businessUnitContactID;
   }
 
   @Override
