@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * This class reads a view which joins GusinessUnits with the users who
+ * This class reads a view which joins BusinessUnits with the users who
  * last changed the BusinessUnit and who own the BusinessUnit.  This
  * view may not be updated which is why all columns are flagged as
  * updatable false.
@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
-@Table(name="businessusers")
+@Table(name="businessusers") // bogus mapping - there are joins
 public class BusinessUser implements INode{
   @Id
   @JsonProperty("uUID")

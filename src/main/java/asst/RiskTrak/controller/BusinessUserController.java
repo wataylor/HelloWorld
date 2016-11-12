@@ -28,7 +28,7 @@ public class BusinessUserController {
   @RequestMapping(value="businessUsers", method=RequestMethod.GET)
   public List<BusinessUser> list() {
     boolean success = true;
-    List<BusinessUser> bulist = businessUserRepository.findAll();
+    List<BusinessUser> bulist = businessUserRepository.queryAllBusinessUsers();
     if (MaN.isListMTP(bulist)) {
       throw new XceptionNotFound();
     }
@@ -46,7 +46,7 @@ public class BusinessUserController {
   @RequestMapping(value="businessUser/{id}", method=RequestMethod.GET)
   public BusinessUser get(@PathVariable String id) {
     // return BusinessuserStub.get(id);
-    BusinessUser bu = businessUserRepository.findOne(id);
+    BusinessUser bu = businessUserRepository.queryById(id);
     if (bu == null) {
       throw new XceptionNotFound();
     }

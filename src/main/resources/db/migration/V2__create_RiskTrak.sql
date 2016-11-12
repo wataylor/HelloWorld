@@ -54,34 +54,6 @@ INSERT INTO `businessunits` VALUES ('BU001',NULL,'2016-10-14 05:21:30','USR10',N
 UNLOCK TABLES;
 
 --
--- Temporary view structure for view `businessusers`
---
-
-DROP TABLE IF EXISTS `businessusers`;
-/*!50001 DROP VIEW IF EXISTS `businessusers`*/;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
-/*!50001 CREATE VIEW `businessusers` AS SELECT
- 1 AS `UUID`,
- 1 AS `Title`,
- 1 AS `Description`,
- 1 AS `UMSalutation`,
- 1 AS `UMFirstname`,
- 1 AS `UMMiddleName`,
- 1 AS `UMLastName`,
- 1 AS `UMSuffix`,
- 1 AS `UMPhone`,
- 1 AS `UMEmail`,
- 1 AS `UCSalutation`,
- 1 AS `UCFirstname`,
- 1 AS `UCMiddleName`,
- 1 AS `UCLastName`,
- 1 AS `UCSuffix`,
- 1 AS `UCPhone`,
- 1 AS `UCEmail`*/;
-SET character_set_client = @saved_cs_client;
-
---
 -- Table structure for table `customuserfields`
 --
 
