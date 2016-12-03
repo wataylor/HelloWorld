@@ -41,6 +41,14 @@ public class BusinessUnit implements INode{
   @Column(columnDefinition="CreatedByID", length=32, updatable=false)
   public String createdByID;
 
+  @JsonProperty("assignedByID")
+  @Column(columnDefinition="AssignedByID", length=32, updatable=false)
+  public String assignedByID;
+
+  @JsonProperty("assigneeID")
+  @Column(columnDefinition="AssigneeID", length=32, updatable=false)
+  public String assigneeID;
+
   @JsonProperty("parentID")
   @Column(columnDefinition="ParentID", length=32, nullable=true)
   public String parentID;
@@ -52,10 +60,6 @@ public class BusinessUnit implements INode{
   @JsonProperty("description")
   @Column(columnDefinition="Description", nullable=true)
   public String description;
-
-  @JsonProperty("contactID")
-  @Column(columnDefinition="ContactID", length=32)
-  public String contactID;
 
   public String getuUID() {
     return uUID;
@@ -129,12 +133,20 @@ public class BusinessUnit implements INode{
     this.description = businessUnitDescription;
   }
 
-  public String getContactID() {
-    return contactID;
+  public String getAssignedByID() {
+    return assignedByID;
   }
 
-  public void setContactID(String businessUnitContactID) {
-    this.contactID = businessUnitContactID;
+  public void setAssignedByID(String businessUnitContactID) {
+    this.assignedByID = businessUnitContactID;
+  }
+
+  public void setAssigneeID(String businessUnitContactID) {
+    this.assigneeID = businessUnitContactID;
+  }
+
+  public String getAssigneeID() {
+    return assigneeID;
   }
 
   @Override

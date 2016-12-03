@@ -44,8 +44,8 @@ public class BusinessUser implements INode{
   public long created;
 
   @JsonProperty("asgn")
-  @Column(columnDefinition="Assigned", nullable=true, updatable=false)
-  public long assigned;
+  @Column(columnDefinition="AssignedOn", nullable=true, updatable=false)
+  public long assignedOn;
 
   @JsonProperty("umSal")
   @Column(columnDefinition="UMSalutation", nullable=true, updatable=false)
