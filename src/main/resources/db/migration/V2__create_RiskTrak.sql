@@ -32,12 +32,16 @@ CREATE TABLE `businessunits` (
   `ParentID` char(32) DEFAULT NULL,
   `Title` varchar(255) DEFAULT NULL,
   `Description` longtext,
-  `ContactID` char(32) NOT NULL,
+  `AssignedOn` bigint(20) DEFAULT NULL,
+  `AssignedByID` char(32) DEFAULT NULL,
+  `AssigneeID` char(32) DEFAULT NULL,
   PRIMARY KEY (`UUID`),
-  KEY `Users_1` (`ContactID`),
   KEY `mod11` (`ModifiedByID`),
   KEY `cre1` (`CreatedByID`),
-  CONSTRAINT `Users_1` FOREIGN KEY (`ContactID`) REFERENCES `users` (`UUID`),
+  KEY `assEE` (`AssigneeID`),
+  KEY `assBY` (`AssignedByID`),
+  CONSTRAINT `assBY` FOREIGN KEY (`AssignedByID`) REFERENCES `users` (`UUID`),
+  CONSTRAINT `assEE` FOREIGN KEY (`AssigneeID`) REFERENCES `users` (`UUID`),
   CONSTRAINT `cre1` FOREIGN KEY (`CreatedByID`) REFERENCES `users` (`UUID`),
   CONSTRAINT `mod11` FOREIGN KEY (`ModifiedByID`) REFERENCES `users` (`UUID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -49,7 +53,7 @@ CREATE TABLE `businessunits` (
 
 LOCK TABLES `businessunits` WRITE;
 /*!40000 ALTER TABLE `businessunits` DISABLE KEYS */;
-INSERT INTO `businessunits` VALUES ('BU001',NULL,'2016-10-14 05:21:30','USR10',NULL,'USR10',NULL,'Title','Description','USR01'),('BU002','BU001','2016-11-05 02:51:19',NULL,NULL,NULL,NULL,'Sub-Unit Title','Sub-Unit Description','USR01');
+INSERT INTO `businessunits` VALUES ('BU001',NULL,'2016-12-03 18:39:07','USR10',1420088400000,'USR10',NULL,'Title','Description',1433260800000,'USR07','USR04'),('BU002','BU001','2016-12-03 18:40:10','USR10',1420088400000,'USR10',NULL,'Sub-Unit Title','Sub-Unit Description',1433260800000,'USR07','USR04');
 /*!40000 ALTER TABLE `businessunits` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -592,6 +596,32 @@ INSERT INTO `risks` VALUES ('RSK001',NULL,'2016-10-15 01:32:31','USR07',20010314
 UNLOCK TABLES;
 
 --
+-- Table structure for table `schema_version`
+--
+
+DROP TABLE IF EXISTS `schema_version`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `schema_version_vr_idx` (`version_rank`),
+  KEY `schema_version_ir_idx` (`installed_rank`),
+  KEY `schema_version_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `users`
 --
 
@@ -629,31 +659,4 @@ INSERT INTO `users` VALUES ('USR01',NULL,'2016-10-14 22:49:59',NULL,NULL,NULL,'R
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
---
--- Final view structure for view `businessusers`
---
-
-/*!50001 DROP VIEW IF EXISTS `businessusers`*/;
-/*!50001 SET @saved_cs_client          = @@character_set_client */;
-/*!50001 SET @saved_cs_results         = @@character_set_results */;
-/*!50001 SET @saved_col_connection     = @@collation_connection */;
-/*!50001 SET character_set_client      = utf8 */;
-/*!50001 SET character_set_results     = utf8 */;
-/*!50001 SET collation_connection      = utf8_general_ci */;
-/*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`dev`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `businessusers` AS select `bu`.`UUID` AS `UUID`,`bu`.`Title` AS `Title`,`bu`.`Description` AS `Description`,`um`.`Salutation` AS `UMSalutation`,`um`.`FirstName` AS `UMFirstname`,`um`.`MiddleName` AS `UMMiddleName`,`um`.`LastName` AS `UMLastName`,`um`.`Suffix` AS `UMSuffix`,`um`.`Phone` AS `UMPhone`,`um`.`EmailAddress` AS `UMEmail`,`uc`.`Salutation` AS `UCSalutation`,`uc`.`FirstName` AS `UCFirstname`,`uc`.`MiddleName` AS `UCMiddleName`,`uc`.`LastName` AS `UCLastName`,`uc`.`Suffix` AS `UCSuffix`,`uc`.`Phone` AS `UCPhone`,`uc`.`EmailAddress` AS `UCEmail` from ((`businessunits` `bu` left join `users` `um` on((`bu`.`ModifiedByID` = `um`.`UUID`))) left join `users` `uc` on((`bu`.`ContactID` = `uc`.`UUID`))) */;
-/*!50001 SET character_set_client      = @saved_cs_client */;
-/*!50001 SET character_set_results     = @saved_cs_results */;
-/*!50001 SET collation_connection      = @saved_col_connection */;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
-
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2016-11-04 21:32:32
+-- Dump completed on 2016-11-04 19:47:08

@@ -35,6 +35,18 @@ public class BusinessUser implements INode{
   @Column(columnDefinition="Description", nullable=true, updatable=false)
   public String description;
 
+  @JsonProperty("mod")
+  @Column(columnDefinition="Modified", nullable=true, updatable=false)
+  public String modified;
+
+  @JsonProperty("cre")
+  @Column(columnDefinition="Created", nullable=true, updatable=false)
+  public long created;
+
+  @JsonProperty("asgn")
+  @Column(columnDefinition="Assigned", nullable=true, updatable=false)
+  public long assigned;
+
   @JsonProperty("umSal")
   @Column(columnDefinition="UMSalutation", nullable=true, updatable=false)
   public String umSalutation;
@@ -78,6 +90,50 @@ public class BusinessUser implements INode{
   @JsonProperty("ucEmail")
   @Column(columnDefinition="UCEmailAddres", nullable=true, updatable=false)
   public String ucEmail;
+
+  @JsonProperty("aeSal")
+  @Column(columnDefinition="AESalutation", nullable=true, updatable=false)
+  public String aeSalutation;
+  @JsonProperty("aeFirstName")
+  @Column(columnDefinition="AEFirstName", nullable=true, updatable=false)
+  public String aeFirstName;
+  @JsonProperty("aeMiddleName")
+  @Column(columnDefinition="AEMiddleName", nullable=true, updatable=false)
+  public String aeMiddlename;
+  @JsonProperty("aeLastName")
+  @Column(columnDefinition="AELastName", nullable=true, updatable=false)
+  public String aeLastName;
+  @JsonProperty("aeSuffix")
+  @Column(columnDefinition="AESuffix", nullable=true, updatable=false)
+  public String aeSuffix;
+  @JsonProperty("aePhone")
+  @Column(columnDefinition="AEPhone", nullable=true, updatable=false)
+  public String aePhone;
+  @JsonProperty("aeEmail")
+  @Column(columnDefinition="AEEmailAddres", nullable=true, updatable=false)
+  public String aeEmail;
+
+  @JsonProperty("abSal")
+  @Column(columnDefinition="ABSalutation", nullable=true, updatable=false)
+  public String abSalutation;
+  @JsonProperty("abFirstName")
+  @Column(columnDefinition="ABFirstName", nullable=true, updatable=false)
+  public String abFirstName;
+  @JsonProperty("abMiddleName")
+  @Column(columnDefinition="ABMiddleName", nullable=true, updatable=false)
+  public String abMiddlename;
+  @JsonProperty("abLastName")
+  @Column(columnDefinition="ABLastName", nullable=true, updatable=false)
+  public String abLastName;
+  @JsonProperty("abSuffix")
+  @Column(columnDefinition="ABSuffix", nullable=true, updatable=false)
+  public String abSuffix;
+  @JsonProperty("abPhone")
+  @Column(columnDefinition="ABPhone", nullable=true, updatable=false)
+  public String abPhone;
+  @JsonProperty("abEmail")
+  @Column(columnDefinition="ABEmailAddres", nullable=true, updatable=false)
+  public String abEmail;
 
   @Override
   public boolean databaseToForm() {
